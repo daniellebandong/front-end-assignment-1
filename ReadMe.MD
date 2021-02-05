@@ -7,4 +7,8 @@ Clone this repo
 `npm install` to install all the required dependencies
 `npm start` to start the local server
 
+
+###Examples of stock symbols to enter
+
+
 Your API key is: Z5UA9W9K5MT3N397.
