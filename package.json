@@ -11,6 +11,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "ejs": "^3.1.6",
     "parcel": "^1.12.4"
   }
 }
