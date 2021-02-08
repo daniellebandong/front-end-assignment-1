@@ -1,8 +1,8 @@
-import ejs from 'ejs'
+// import ejs from '../ejs'
 
-function generateMarkup(template, data){
-   return ejs.render(template, {url:data.url})
+// function generateMarkup(template, data){
+//    return ejs.render(template, {url:data.url})
    
-}
+// }
 
-export default generateMarkup 
+// export default generateMarkup 
