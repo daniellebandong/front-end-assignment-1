@@ -1,9 +1,9 @@
-function stringToElement(item){
-    const element = document.createRange().createContextualFragment(item).children[0] 
-    // check to see if return value is element node before returning.
-    // throw new error
+// function stringToElement(item){
+//     const element = document.createRange().createContextualFragment(item).children[0] 
+//     // check to see if return value is element node before returning.
+//     // throw new error
   
-    return element
- }
+//     return element
+//  }
  
- export default stringToElement
+//  export default stringToElement

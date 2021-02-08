@@ -1,10 +1,7 @@
 import {
     getRequest
 } from "./utils/dataFetcher.js";
-import {
-    createStockView
-} from './controllers/stock-controller.js'
-import addToDom from "./utils/addToDom.js";
+
 window.addEventListener("load", function (e) {
     document.querySelector("#makeRequest")
         .addEventListener("click", function (e) {
