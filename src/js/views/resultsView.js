@@ -1,4 +1,4 @@
-import ejs from "ejs";
+
 const stockView = `
 <aside class="stock">
   <header><h3 class="name"> Stock Details</h3></header>
