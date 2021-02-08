@@ -13,8 +13,15 @@ window.addEventListener("load",function (e){
             `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockInputValue}&apikey=Z5UA9W9K5MT3N397`
         );
         getData.then((result) =>{
+            
+            //if the input is empty
+            if(stockInputValue === " "){
+                document.querySelector("#error").style.display = "block";
+                document.querySelector("#errorMessage").innerHTML = "Please enter a stock symbol";
+                document.querySelector("#results").style.display = "none";
+            }
             //if the result returns an empty array
-            if(JSON.stringify(result["Global Quote"]) === "{}"){
+            else if(JSON.stringify(result["Global Quote"]) === "{}"){
                 document.querySelector("#error").style.display = "block";
                 document.querySelector("#results").style.display = "none";
             }
