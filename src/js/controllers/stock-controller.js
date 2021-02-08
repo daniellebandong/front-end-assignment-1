@@ -17,4 +17,4 @@ function createElements(stocks){
     })
     return items
 }
-export{createStockView}
+export default createStockView
