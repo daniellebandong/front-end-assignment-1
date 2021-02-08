@@ -1,16 +1,20 @@
 {
   "name": "assignment-1",
   "version": "1.0.0",
-  "description": "",
+  "description": "First assignment for my front end development class",
   "main": "index.js",
   "scripts": {
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html"
   },
   "keywords": [],
-  "author": "",
+  "author": "Danielle Bandong",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/plugin-transform-runtime": "^7.12.15",
+    "@babel/preset-env": "^7.12.13",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "parcel": "^1.12.4"
   }

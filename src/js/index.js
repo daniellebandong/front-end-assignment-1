@@ -1,31 +1,50 @@
+
 import { getRequest } from "./utils/dataFetcher.js";
 import {createStockView} from './controllers/stock-controller.js'
 import addToDom from "./utils/addToDom.js";
 window.addEventListener("load",function (e){
     document.querySelector("#makeRequest")
     .addEventListener("click", function(e){
-        const stockInputValue = document.querySelector("#stockSymbol").value
-        // VALIDATION HERE BEFORE GET REQUEST MAYBE?
+        e.preventDefault();
+        //user clicks the search button, need to grab the value of the input and put it into the stock input value
+        const stockInputValue = document.querySelector("#searchTerm").value
+        
         const getData = getRequest(
             `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${stockInputValue}&apikey=Z5UA9W9K5MT3N397`
         );
         getData.then((result) =>{
-            console.log(result)
-            const stocks = createStockView(result)
-            addToDom('.stock-display', stocks)
-            console.log(stocks)
+            //if the result returns an empty array
+            if(JSON.stringify(result["Global Quote"]) === "{}"){
+                document.querySelector("#error").style.display = "block";
+                document.querySelector("#results").style.display = "none";
+            }
+            else{
+                //hide error message
+                document.querySelector("#error").style.display = "none";
+                //create variables for information I want to display from the API
+                let stockSymbol,
+                    stockPrice,
+                    stockDate,
+                    stockChangeDollars,
+                    stockChangePercent,
+                    previousClose;
+                stockSymbol = result["Global Quote"]["01. symbol"]
+                stockPrice = result["Global Quote"]["05. price"]
+                stockDate = result["Global Quote"]["07. latest trading day"]
+                stockChangeDollars = result["Global Quote"]["09. change"]
+                stockChangePercent = result["Global Quote"]["10. change percent"]
+                previousClose = result["Global Quote"]["08. previous close"]
+                //I was not able to figure out how to use views and controllers and then adding to the DOM so I used vanilla javascript to display the results, I know its not what you wanted but this was the only way I could figure out how to display the results
+                document.querySelector("#results").style.display = "flex";
+                document.querySelector("#symbol").innerHTML = stockSymbol;
+                document.querySelector("#price").innerHTML ="$" + parseFloat(stockPrice).toFixed(2);
+                document.querySelector("#date").innerHTML = stockDate;
+                document.querySelector("#changeDollars").innerHTML = "$" + parseFloat(stockChangeDollars).toFixed(2);
+                document.querySelector("#changePercent").innerHTML = stockChangePercent;
+                document.querySelector("#previousClose").innerHTML ="$" + parseFloat(previousClose).toFixed(2) ;
+            }           
 
-            let stockSymbol = document.querySelector("#symbol").value
-            let stockPrice = document.querySelector("#currentPrice").value
-            let stock = document.querySelector("#date").value
-            result["Global Quote"]["01. symbol"]
-            stockSymbol = result["Global Quote"]["01. symbol"]
-            stockPrice = result["Global Quote"]["05. price"]
-            stock = result["Global Quote"]["07. latest trading day"]
-            //the other info i want to display is change in dollars and change in percent and the high
-            console.log(stockSymbol)
-            console.log(stockPrice)
-            console.log(stock)
+           
         })
 
     })

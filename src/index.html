@@ -1,25 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Ticker App</title>
-</head>
-<body>
-    <header>
-        <label for="stockSymbol">Stock Symbol:</label>
-        <input type="text"  name="stockSymbol" id="stockSymbol" placeholder="$TSLA">
-        <button id="makeRequest">Get Data</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stock Ticker</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  </head>
+  <body>
+ 
+    <header class="app-header">
+      <div class="header-content">
+        <h1 class="title">Stock Search API</h1>
+        <p class="tagline">Searching filter and displaying data</p>
+      </div>
     </header>
-    <div class="stock-display">
-        <!-- NEED TO VALIDATE THE SYMBOL BEFORE SENDING IT TO THE QUERY STRING -->
-        <label for="symbol">Symbol:</label>
-        <label id="symbol"></label>
-        <label for="currentPrice">Current Price:</label>
-        <label id="currentPrice"></label>
-        <label for="date">Date:</label>
-        <label id="date"></label>
-    </div>
-    <script src="js/index.js" type="module"></script>   
-</body>
+
+    <main>
+    <form id="search" class="search-api">
+        <label for="searchTerm">Stock Symbol:</label>
+        <input id="searchTerm" type="text" placeholder="ex: TSLA" required>
+        <button id="makeRequest">search</button>   
+    </form>    
+     <!-- CONTAINER FOR SEARCH RESULTS -->
+      <aside id="results" class="results" style="display: none;">
+        <ul>
+          <li>Symbol: <span id="symbol"></span></li>
+          <li>Price: <span id="price"></span></li>
+          <li>Latest Trading Day: <span id="date"></span></li>
+          <li>Change($): <span id="changeDollars"></span></li>
+          <li>Change(%): <span id="changePercent"></span></li>
+          <li>Previous Close: <span id="previousClose"></span></li>
+        </ul>
+      </aside>
+      <aside id="error" class="error" style="display: none;">
+        <b><span class="errorMessage">No Results found for the entered stock symbol. Please enter a valid stock symbol.</span></b>
+      </aside>
+                
+ 
+    </main>
+
+    <script src="js/index.js"></script>
+  </body>
 </html>
+
+
+ 

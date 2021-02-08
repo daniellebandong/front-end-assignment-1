@@ -1,0 +1,31 @@
+body,button{
+    font-family:'Roboto', sans-serif;
+    background-color: antiquewhite;
+}
+h1{text-decoration: underline;}
+header,form, .error{text-align: center;}
+.error{margin-top: 1rem;}
+.errorMessage{color: #ff0000;}
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+button{ 
+    background-color: #0000ff;
+    color:#fff;
+    border:1px solid black;
+    border-radius: 3px;
+    cursor: pointer;
+}
+button:hover{
+    background-color: #fff;
+    color: #0000ff;
+}
+.results{
+    flex-wrap: wrap;
+    justify-content: center;
+}
+li{
+    margin-bottom: 10px;
+}
+
